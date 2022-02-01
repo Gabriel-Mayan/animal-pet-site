@@ -1,9 +1,13 @@
-import './style.module.scss';
+import style from './style.module.scss';
+
+import { Link } from 'react-router-dom';
 
 export function Page404() {
   return (
     <div>
-      <h1>Page404</h1>
+      <h2> Ops! </h2>
+      <p> Página não encontrada </p>
+      <Link to={('/home')}> <button> Página inicial </button> </Link>
     </div>
   );
 }
