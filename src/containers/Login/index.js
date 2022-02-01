@@ -1,6 +1,7 @@
 import './style.module.scss';
-import api from '../../services/api';
 
+import api from '../../services/api';
+import notify from '../../utils/notify';
 import { useStores } from '../../stores';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
@@ -21,10 +22,14 @@ export function Login() {
       }
 
       const { data: { token, user: userData } } = result;
-      setUserData(userData);
+      
       setToken(token);
+      setUserData(userData);
 
-      history.push('/home');
+      const route = userData.userType === 'Admin' || 
+                    userData.userType === 'Super Admin' ? 'home' : 'admin';
+
+      history.push(`/${route}`);      
     } catch (error) {
       if (error.request) {
         notify('error', error.request.response);
