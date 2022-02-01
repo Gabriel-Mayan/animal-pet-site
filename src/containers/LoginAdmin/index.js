@@ -1,3 +1,5 @@
+import './style.module.scss';
+
 export function LoginAdmin() {
   return (
     <div>

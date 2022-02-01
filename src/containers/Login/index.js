@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { useStores } from '../../stores';
 import { Link, useHistory } from 'react-router-dom';
 
-export default function Login() {
+export function Login() {
 	const { register, handleSubmit } = useForm();
   const { userStore: { setUserData, setToken } } = useStores();
 
