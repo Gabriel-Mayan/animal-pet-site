@@ -1,11 +1,9 @@
-import './style.module.scss';
-
 import api from '../../services/api';
+import notify from '../../utils/notify';
 
-import { useEffect } from "react";
-import { useStores } from '../../stores';
+import { useEffect } from 'react';
 
-export function HomeStudent() {
+export function Home() {
   const { userStore: { products, setProducts } } = useStores();
 
   const getProducts = async () => {
@@ -16,8 +14,8 @@ export function HomeStudent() {
         throw 'Falha ao efetuar o login';
       }
 
-      const { data: products } = result;
-      setProducts(products);
+      const { data } = result;
+      setProducts(data);
     } catch (error) {
       if (error.request) {
         notify('error', error.request.response);
@@ -25,13 +23,13 @@ export function HomeStudent() {
     }
   }
   
-  useEffect(() => {
-		getProducts();
-	}, []);
+  useEffect(() => { getProducts() }, []);
+
+  const productsInfo = products;
 
   return (
     <div>
-      <h1>Home</h1>
+      home
     </div>
-  );
-};
+  ) 
+}
